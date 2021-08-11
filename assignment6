@@ -1,0 +1,34 @@
+a)create a schema bikedb with tables company,bike country?
+
+-create table `company`(Id int(11), Company varchar(20),Country varchar(11),foundingyear int(11),primary key(Id));
+-select *from company;
+-insert into company(Id,Name,Country,foundingyear) values('1','Royal Enfield','India','1955');
+-insert into company(Id,Name,Country,foundingyear) values('2','Ktm','Austria','1934');
+-insert into company(Id,Name,Country,foundingyear) values('3','Ducati','Italy','1926');
+
+-create table `country`(Id int(11),Country varchar(11),primary key(id));
+-insert into country(Id,Name) values('1','India');
+-insert into country(Id,Name) values('2','Austria');
+-insert into country(Id,Name) values('3','Italy');
+
+-create table `bikes`(Id int(11),Name varchar(20),Type int(11), Status varchar(255),primary key(Id));
+-insert into bikes(Id,Name,Type,Status) values('1','Royal Enfield','8','Inactive');
+-insert into bikes(Id,Name,Type,Status) values('2','Ktm','9','Active');
+-insert into bikes(Id,Name,Type,Status) values('3','Ducati','10','Active');
+
+-select * from company;
+-select * from country;
+-select * from bike;
+
+b)select bike from a specific country with their company and founding year?
+
+-select bikes.Id,Bikes.Name,country.Name as Country,company.foundingyear from bikes INNER JOIN country USING(ID) ORDER BY ID;
+
+
+c)select bike from specific country with their status?
+
+-select bikes.Status,country.Name as country from bikes INNER JOIN country on country.Id=bike.Id;
+
+d)select company from specific country?
+
+-select country.Name as Country,company.name as Company from country INNER JOIN company on company.Id=Country.Id;
